@@ -20,3 +20,5 @@ Simple Todo app using ReactJS.
 
 ![alt text](https://github.com/YashSojitra/react-todo-app/blob/master/images/6.png)
 
+deployed link : https://react-todo-app-ys.herokuapp.com/
+

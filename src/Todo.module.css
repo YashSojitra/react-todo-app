@@ -86,6 +86,7 @@ li > p {
 
 li > p:hover{
     color: red;
+    cursor: pointer;
 }
 
 @media (max-width: 768px){

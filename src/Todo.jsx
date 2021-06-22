@@ -1,7 +1,29 @@
-import React from 'react';
-import styles from './Todo.css';
+import React, {useState} from 'react';
+import styles from './Todo.module.css';
 
 const Todo = () => {
+    const [item, setItem] = useState("");
+    const [listItem, setListItem] = useState([]);
+    const inputEvent = (event) => {
+        setItem(event.target.value);
+    }
+
+    const addItem = () => {
+        setListItem((oldListOfItems) => {
+            return [...oldListOfItems, item];
+        })
+
+        setItem("");
+    }
+
+    const deleteItem = (indexOfItem) => {
+        setListItem((oldListOfItems) => {
+            return oldListOfItems.filter((arrElement, index)=> {
+                return index !== indexOfItem;
+            })
+        })
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.card}>

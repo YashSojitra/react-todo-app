@@ -1,18 +1,35 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './Todo.module.css';
+
+// get data from localStorage
+
+const getListItemsFromLocalStorage = () => {
+    let listItemsInLocalStorage = localStorage.getItem('list');
+    
+    if(listItemsInLocalStorage){
+        return JSON.parse(listItemsInLocalStorage);
+    }
+    else{
+        return [];
+    }
+}
 
 const Todo = () => {
     const [item, setItem] = useState("");
-    const [listItem, setListItem] = useState([]);
+    const [listItem, setListItem] = useState(getListItemsFromLocalStorage());
     const inputEvent = (event) => {
         setItem(event.target.value);
     }
 
     const addItem = () => {
-        setListItem((oldListOfItems) => {
-            return [...oldListOfItems, item];
-        })
+        if(!item){
 
+        }
+        else{
+            setListItem((oldListOfItems) => {
+                return [...oldListOfItems, item];
+            })
+        }
         setItem("");
     }
 
@@ -23,6 +40,11 @@ const Todo = () => {
             })
         })
     }
+
+    // add to localStorage
+    useEffect(() => {
+        localStorage.setItem('list',JSON.stringify(listItem));
+    },[listItem]);
 
     return (
         <div className={styles.container}>
